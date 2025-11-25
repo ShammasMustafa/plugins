@@ -1,0 +1,20 @@
+.cuo-admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.cuo-admin-table th {
+    background: #f3f3f3;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.cuo-admin-table td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.cuo-refresh-btn {
+    margin: 10px 0;
+}

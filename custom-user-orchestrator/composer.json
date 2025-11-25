@@ -1,0 +1,9 @@
+{
+  "name": "shammas/custom-user-orchestrator",
+  "autoload": {
+    "psr-4": {
+      "Cuo\\": "src/"
+    }
+  },
+  "require": {}
+}

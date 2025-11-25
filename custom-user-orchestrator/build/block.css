@@ -1,0 +1,10 @@
+.cuo-user-table-block table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cuo-user-table-block th,
+.cuo-user-table-block td {
+    border: 1px solid #ddd;
+    padding: 6px;
+}
