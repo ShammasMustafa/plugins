@@ -50,5 +50,6 @@ class DataManager {
 
     public function clear_cache() {
         delete_transient( self::TRANSIENT_KEY );
+        
     }
 }
