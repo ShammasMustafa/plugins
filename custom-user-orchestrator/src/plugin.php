@@ -26,7 +26,7 @@ class Plugin {
         if ( defined('WP_CLI') && WP_CLI ) {
             \WP_CLI::add_command( 'custom-plugin', new Command( $dataManager ) );
         }
-        // enqueue block scripts (we assume build/block.js exists)
+        // enqueue block scripts 
         $base_dir = $this->base_dir;
         $file = $this->file;
 

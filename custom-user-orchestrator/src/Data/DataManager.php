@@ -18,6 +18,8 @@ class DataManager {
      * @return array|WP_Error
      */
     public function get_users() {
+        error_log("Fetching users from cache or remote API");
+
         $cached = get_transient( self::TRANSIENT_KEY );
 
         if ( false !== $cached && is_array( $cached ) ) {
@@ -35,6 +37,7 @@ class DataManager {
         $result = $this->client->fetch_users();
 
         if ( is_wp_error( $result ) ) {
+            error_log('[MyPlugin] Fetch failed: ' . $result->get_error_message());
             // if we have old cache, return it instead of failing outright
             $old = get_transient( self::TRANSIENT_KEY );
             if ( false !== $old ) {
@@ -42,6 +45,8 @@ class DataManager {
             }
             return $result;
         }
+        // succes message
+         error_log('[MyPlugin] Fetched successfully. Caching users...');
 
         // store the raw array
         set_transient( self::TRANSIENT_KEY, $result, self::TRANSIENT_TTL );
@@ -50,6 +55,7 @@ class DataManager {
 
     public function clear_cache() {
         delete_transient( self::TRANSIENT_KEY );
-        
+        error_log('[MyPlugin] Cache cleared: ' . self::TRANSIENT_KEY);
+
     }
 }
