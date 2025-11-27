@@ -5,14 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "wp-scripts build",
+    "build": "wp-scripts build ./src/Block/index.js --output-path=build --output-filename=block.js",
     "start": "wp-scripts start"
-
   },
-  
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@wordpress/scripts": "^31.1.0"
+  }
 }
-
-

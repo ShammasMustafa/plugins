@@ -35,16 +35,20 @@ class Plugin {
             // register script for block (if available)
             $asset_file = $this->base_dir . '/build/block.asset.php';
             if ( file_exists( $asset_file ) ) {
-                $asset = require $asset_file;
-                wp_register_script(
+               wp_register_script(
                     'cuo-user-table-block',
                     plugins_url( 'build/block.js', $this->file ),
-                    $asset['dependencies'] ?? ['wp-blocks','wp-element','wp-editor','wp-components','wp-i18n'],
-                    $asset['version'] ?? filemtime( $this->base_dir . '/build/block.js' )
+
+                    // FORCE CORRECT GUTENBERG DEPENDENCIES
+                    ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n', 'wp-api'],
+
+                    filemtime( $this->base_dir . '/build/block.js' )
                 );
+
                 register_block_type( 'cuo/user-table', [
                     'editor_script' => 'cuo-user-table-block'
                 ] );
+
             }
         } );
     }
